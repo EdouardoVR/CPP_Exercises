@@ -8,3 +8,14 @@ add_executable(
 #     f2.cpp
 #     f3.cpp
 )
+
+set(executables
+    1-hello_world
+    2-parrot
+    3-array
+    4-calculator
+)
+
+foreach(executable ${executables})
+    add_executable(c1-${executable} chap01/${executable}.cpp)
+endforeach()
