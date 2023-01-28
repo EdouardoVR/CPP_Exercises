@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <iostream>
+#include <PlushStore.hpp>
 
 class Kid
 {
@@ -15,6 +16,13 @@ public:
     int get_money() const
     {
         return money;
+    }
+
+    void buy_plush(PlushStore &store)
+    {
+        auto plush = store.buy(money);
+        if (plush)
+            money -= plush.value().get_cost();
     }
 
 private:
