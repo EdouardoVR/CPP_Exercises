@@ -1,5 +1,97 @@
 #include <iostream>
 #include <string>
+#include <sstream>
+#include <set>
+#include <map>
+#include <vector>
+#include <fstream>
+
+std::set<std::string> make_exit_commands()
+{
+    std::set<std::string> exit_commands;
+    exit_commands.emplace("q");
+    exit_commands.emplace("quit");
+    exit_commands.emplace("e");
+    exit_commands.emplace("exit");
+    return exit_commands;
+}
+
+std::vector<std::string> split(std::string input, char delimiter)
+{
+    std::vector<std::string> vect;
+    std::stringstream s(input);
+    std::string token;
+    while (std::getline(s, token, delimiter))
+    {
+        vect.push_back(token);
+    }
+    return vect;
+}
+
+int main()
+{
+    using namespace std;
+    map<string, string> translator;
+    vector<string> history;
+    while (true)
+    {
+        string input;
+        stringstream stream(input);
+        cout << "Entrez une commande : " << endl;
+        getline(cin, input);
+        vector<string> inputArray = split(input, ' ');
+
+        if (make_exit_commands().count(inputArray[0]) > 0)
+            break;
+
+        if (inputArray[0].compare("add") == 0)
+        {
+            translator.emplace(inputArray[1], inputArray[2]);
+            history.push_back(inputArray[1]);
+            history.push_back(inputArray[2]);
+            cout << inputArray[1] << " => " << inputArray[2] << endl;
+        }
+
+        if (inputArray[0].compare("translate") == 0)
+        {
+            auto it = inputArray.begin() + 1;
+            for (; it != inputArray.end(); ++it)
+            {
+                cout << (translator[*it].empty() ? "???" : (translator[*it])) << endl;
+            }
+        }
+
+        if (inputArray[0].compare("print") == 0)
+        {
+            auto it = translator.begin();
+            for (; it != translator.end(); ++it)
+            {
+                cout << it->first << " => " << it->second << endl;
+            }
+        }
+
+        if (inputArray[0].compare("save") == 0)
+        {
+            ofstream outfile(inputArray[1]);
+            auto it = history.begin();
+            for (; it != history.end(); ++it)
+            {
+                outfile << *it << endl;
+                ;
+            }
+        }
+
+        if (inputArray[0].compare("load") == 0)
+        {
+            ofstream infile(inputArray[1]);
+        }
+    }
+    return 0;
+}
+
+/*
+#include <iostream>
+#include <string>
 #include <set>
 #include <sstream>
 #include <map>
@@ -35,7 +127,6 @@ int main()
             ;
         }
 
-        /*
         std::string line;
         std::getline(std::cin, line);
         std::stringstream line_stream{};
@@ -46,12 +137,13 @@ int main()
             line_stream >> mot;
             std::cout << mot << std::endl;
         }
-        */
     }
     return 0;
 }
-/*
+*/
 
+/*
+Correction
 #include <fstream>
 #include <iostream>
 #include <map>
