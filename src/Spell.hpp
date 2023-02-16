@@ -36,6 +36,7 @@ public:
         : Card(id, CardType::Spell), _id{id}, _type{type}
     {
         set_name(name);
+        _symbol = u8"魔";
     };
 
     SpellType get_spell_type()

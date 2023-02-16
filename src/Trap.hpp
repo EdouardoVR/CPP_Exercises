@@ -29,16 +29,12 @@ public:
     Trap(std::string id, std::string name, TrapType type) : Card(id, CardType::Trap), _id{id}, _type{type}
     {
         set_name(name);
+        _symbol = u8"罠";
     }
 
     TrapType get_trap_type()
     {
         return _type;
-    }
-
-    std::string get_symbol() const
-    {
-        return to_string(_type);
     }
 
 private:
