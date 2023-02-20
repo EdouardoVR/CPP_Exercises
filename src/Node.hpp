@@ -12,3 +12,5 @@ public:
     virtual ~Node() {};
     virtual std::string print() const = 0;
 };
+
+using NodePtr = std::unique_ptr<Node>;

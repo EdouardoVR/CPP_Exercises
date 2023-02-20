@@ -14,3 +14,8 @@ int IntLeaf::data()
 {
     return _value;
 }
+
+std::unique_ptr<IntLeaf> IntLeaf::make_ptr(int value)
+{
+    return std::make_unique<IntLeaf>(value);
+}

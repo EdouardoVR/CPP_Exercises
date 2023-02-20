@@ -16,6 +16,8 @@ public:
 
     int data();
 
+    static std::unique_ptr<IntLeaf> make_ptr(int value);
+
 private:
     int _value;
 };

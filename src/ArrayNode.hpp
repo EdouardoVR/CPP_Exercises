@@ -10,4 +10,9 @@ public:
     NodeKind kind();
 
     std::string print() const override;
+
+    static std::unique_ptr<ArrayNode> make_ptr();
+
+private:
+    std::vector<NodePtr> _nodes;
 };

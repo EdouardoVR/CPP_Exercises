@@ -17,6 +17,8 @@ public:
 
     std::string data();
 
+    static std::unique_ptr<StringLeaf> make_ptr(std::string value);
+
 private:
     std::string _value;
 };
