@@ -17,6 +17,8 @@ public:
 
     std::string data() { return _value; }
 
+    static NodePtr make_ptr(std::string value) { return std::make_unique<StringLeaf>(value); }
+
 private:
     std::string _value;
 };
