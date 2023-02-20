@@ -10,6 +10,5 @@ protected:
 
 public:
     virtual ~Node() {};
-    virtual int         value() = 0;
-    virtual std::string print() = 0;
+    virtual std::string print() const = 0;
 };

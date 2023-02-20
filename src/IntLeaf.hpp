@@ -10,11 +10,9 @@ public:
     IntLeaf(int value)
         : _value { value } {};
 
-    int value() override { return _value; }
+    std::string print() const override { return std::to_string(_value); }
 
     NodeKind kind() { return NodeKind::INT; }
-
-    std::string print() override { return std::to_string(_value); }
 
     int data() { return _value; }
 
