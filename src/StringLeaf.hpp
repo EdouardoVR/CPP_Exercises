@@ -11,13 +11,11 @@ public:
     StringLeaf(std::string value)
         : _value { value } {};
 
-    std::string print() const override { return "\"" + _value + "\""; }
+    std::string print() const override;
 
-    NodeKind kind() { return NodeKind::STRING; }
+    NodeKind kind();
 
-    std::string data() { return _value; }
-
-    static NodePtr make_ptr(std::string value) { return std::make_unique<StringLeaf>(value); }
+    std::string data();
 
 private:
     std::string _value;

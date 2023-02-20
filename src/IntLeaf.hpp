@@ -10,13 +10,11 @@ public:
     IntLeaf(int value)
         : _value { value } {};
 
-    std::string print() const override { return std::to_string(_value); }
+    std::string print() const override;
 
-    NodeKind kind() { return NodeKind::INT; }
+    NodeKind kind();
 
-    int data() { return _value; }
-
-    static NodePtr make_ptr(int value) { return std::make_unique<IntLeaf>(value); }
+    int data();
 
 private:
     int _value;
