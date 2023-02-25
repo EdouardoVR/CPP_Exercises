@@ -24,6 +24,10 @@ public:
 
     size_t node_count() const override;
 
+    bool has_child(std::string value) const;
+
+    Node* at(const std::string& key) const;
+
 private:
     std::map<std::string, std::unique_ptr<Node>> _values;
 };

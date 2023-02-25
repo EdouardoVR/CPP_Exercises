@@ -24,6 +24,9 @@ public:
 
     size_t node_count() const override;
 
+    std::vector<NodePtr>::iterator begin() { return _nodes.begin(); }
+    std::vector<NodePtr>::iterator end() { return _nodes.end(); }
+
 private:
     std::vector<std::unique_ptr<Node>> _nodes;
 };

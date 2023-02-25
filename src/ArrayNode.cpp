@@ -48,8 +48,7 @@ size_t ArrayNode::node_count() const
     size_t result = 0;
     for (size_t i = 0; i < _nodes.size(); i++)
     {
-        result += 1;
         result += _nodes[i]->node_count();
     }
-    return result;
+    return result + 1;
 }

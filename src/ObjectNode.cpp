@@ -50,8 +50,27 @@ size_t ObjectNode::node_count() const
     size_t result = 0;
     for (auto& v : _values)
     {
-        result += 1;
         result += v.second->node_count();
     }
-    return result;
+    return result + 1;
+}
+
+bool ObjectNode::has_child(std::string value) const
+{
+    for (auto& v : _values)
+    {
+        if (v.first == value)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+Node* ObjectNode::at(const std::string& key) const
+{
+    if (ObjectNode::has_child(key))
+        return _values.at(key).get();
+    else
+        return nullptr;
 }
